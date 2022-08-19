@@ -1,8 +1,9 @@
 name: test-action-CI
 
 on: 
-  branches: main
-    - [push]
+  push:
+    branches: [ main ]
+
 
 jobs:
   CI:
