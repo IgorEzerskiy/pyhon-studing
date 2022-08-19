@@ -29,7 +29,6 @@ jobs:
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
-        # Run tox using the version of Python in `PATH`
-        run: tox --py '3.x'
+        run: tox --py 39
       - name: End
         run: echo "CI was END!" 
