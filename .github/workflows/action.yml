@@ -1,7 +1,7 @@
 name: test-action-CI
 
 on: 
-  branches: master
+  branches: main
     - [push]
 
 jobs:
