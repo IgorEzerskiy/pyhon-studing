@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Copy file from GIT HUB
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       - name: End
         run: echo "CI was END!"
