@@ -8,13 +8,17 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.8", "3.9", "3.10"]
+
     steps:
       - name: Copy file from GIT HUB
         uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -25,5 +29,10 @@ jobs:
           pip install flake8
           flake8 .
         continue-on-error: true
+      - name: Install tox and any other packages
+        run: pip install tox
+      - name: Run tox
+        # Run tox using the version of Python in `PATH`
+        run: tox -e py
       - name: End
         run: echo "CI was END!" 
